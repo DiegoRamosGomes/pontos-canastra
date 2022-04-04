@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Canastra",
+    "slug": "Canastra",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
