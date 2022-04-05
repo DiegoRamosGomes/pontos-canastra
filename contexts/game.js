@@ -1,9 +1,18 @@
 import {createContext, useState} from "react";
 
-const GameContext = createContext({started: false, toggleGame: () => {}});
+const GameContext = createContext({
+    started: false,
+    toggleGame: () => {},
+    rounds: [],
+    players: [],
+    addPlayer: () => {},
+    addRound: () => {},
+});
 
 export const GameProvider = ({children}) => {
     const [started, setStarted] = useState(false)
+    const [rounds, setRounds] = useState([])
+    const [players, setPlayers] = useState([])
 
     function startGame() {
         setStarted(true)
@@ -17,8 +26,16 @@ export const GameProvider = ({children}) => {
         started ? endGame() : startGame()
     }
 
+    function addPlayer(player: {name: string}) {
+        setPlayers([...players, player])
+    }
+
+    function addRound(...points: number[]) {
+        setRounds([...rounds, points])
+    }
+
     return (
-        <GameContext.Provider value={{started, toggleGame}}>
+        <GameContext.Provider value={{started, toggleGame, rounds, players, addPlayer, addRound}}>
             {children}
         </GameContext.Provider>
     )

@@ -2,11 +2,14 @@ import {Text, View} from "react-native-web";
 import {StyleSheet} from "react-native";
 import {palette} from "../config/theme";
 
-export default function Round() {
+export default function Round(props) {
     return (
         <View style={styles.scoreContainer}>
-                <Text style={styles.score}>1529</Text>
-                <Text style={styles.score}>1529</Text>
+            {props.points.map((point, index) => {
+                return (
+                    <Text key={index} style={styles.score}>{point}</Text>
+                )
+            })}
         </View>
     )
 }
