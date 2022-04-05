@@ -1,29 +1,15 @@
 import {StatusBar} from 'expo-status-bar';
-import React from 'react';
-import {StyleSheet, Text, View, ScrollView, Button} from 'react-native';
-import Header from "./components/Header";
-import Scoreboard from "./components/Scoreboard";
-import LineSeparator from "./components/LineSeparator";
-import Round from "./components/Round";
-import {palette} from "./config/theme";
+import {StyleSheet, View} from 'react-native';
+import {GameProvider} from "./contexts/game";
+import Home from "./components/Home";
 
 export default function App() {
     return (
         <View style={styles.container}>
             <StatusBar style="auto"/>
-            <ScrollView>
-                <Header/>
-                <Scoreboard/>
-                <LineSeparator/>
-                <Round/>
-                <Round/>
-                <Round/>
-                <Round/>
-                <Round/>
-                <Round/>
-                <Round/>
-            </ScrollView>
-            <Button color={palette.success} title="Encerrar partida" onPress={() => {}}/>
+            <GameProvider>
+                <Home />
+            </GameProvider>
         </View>
     );
 }

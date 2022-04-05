@@ -6,11 +6,7 @@ export default function Header() {
     return (
         <View style={styles.container}>
             <View>
-                <Text style={styles.playerName}>Jogador 1</Text>
-                <Text style={styles.score}>1529</Text>
-            </View>
-            <View>
-                <Text style={styles.playerName}>Jogador 1</Text>
+                <Text style={styles.playerName}>Player1</Text>
                 <Text style={styles.score}>1529</Text>
             </View>
         </View>
