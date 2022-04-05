@@ -19,6 +19,8 @@ export const GameProvider = ({children}) => {
     }
 
     function endGame() {
+        setPlayers([])
+        setRounds([])
         setStarted(false)
     }
 
@@ -26,8 +28,10 @@ export const GameProvider = ({children}) => {
         started ? endGame() : startGame()
     }
 
-    function addPlayer(player: {name: string}) {
-        setPlayers([...players, player])
+    function addPlayer(player: {name: string, score: number}) {
+        const newPlayers = players
+        newPlayers[newPlayers.length] = player
+        setPlayers(newPlayers)
     }
 
     function addRound(...points: number[]) {

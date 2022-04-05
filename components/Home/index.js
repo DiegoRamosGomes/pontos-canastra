@@ -9,9 +9,13 @@ import Round from "../Round";
 
 export default function Home() {
 
-    const {started, toggleGame, rounds} = useContext(GameContext)
+    const {started, toggleGame, rounds, addPlayer} = useContext(GameContext)
 
     function handleToggleGame() {
+        if (!started) {
+            addPlayer({name: 'Player 1', score: 0})
+            addPlayer({name: 'Player 2', score: 0})
+        }
         toggleGame()
     }
 
