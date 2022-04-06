@@ -1,4 +1,4 @@
-import {Button, ScrollView, View} from "react-native";
+import {Button, ScrollView, StyleSheet, View} from "react-native";
 import Header from "../Header";
 import Scoreboard from "../Scoreboard";
 import LineSeparator from "../LineSeparator";
@@ -20,16 +20,31 @@ export default function Home() {
     }
 
     return (
-        <View style={{flex: 1}}>
-            <ScrollView>
-                <Header/>
-                <Scoreboard/>
-                <LineSeparator/>
+        <>
+            {started &&
+                <View style={{flex: 1}}>
+                    <ScrollView>
+                        <Header/>
+                        <Scoreboard/>
+                        <LineSeparator/>
 
-                {rounds.map((points, index) => <Round key={index} points={points}/>)}
-            </ScrollView>
-            <Button color={palette.success} title={(started ? 'Encerrar' : 'Iniciar') + ' partida'}
-                    onPress={handleToggleGame}/>
-        </View>
+                        {rounds.map((points, index) => <Round key={index} points={points}/>)}
+                    </ScrollView>
+                    <Button color={palette.success} title={'Encerrar partida'} onPress={handleToggleGame}/>
+                </View>
+            }
+            {!started &&
+                <View style={styles.startGameContainer}>
+                    <Button color={palette.success} title={'Iniciar partida'} onPress={handleToggleGame}/>
+                </View>
+            }
+        </>
     );
 }
+
+const styles = StyleSheet.create({
+    startGameContainer: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+});
